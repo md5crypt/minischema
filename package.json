@@ -1,0 +1,43 @@
+{
+	"name": "tinyschmea",
+	"version": "1.0.0",
+	"description": "a simple json based data validator",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"directories": {
+		"lib": "lib"
+	},
+	"files": [
+		"lib/*"
+	],
+	"scripts": {
+		"build": "npm run lint && tsc",
+		"watch": "tsc --watch",
+		"lint": "eslint --ext .ts src",
+		"prepublishOnly": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/md5crypt/tinyschema.git"
+	},
+	"keywords": [
+		"schema",
+		"validator",
+		"json",
+		"typescript"
+	],
+	"author": "Marek Korzeniowski",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/md5crypt/tinyschema/issues"
+	},
+	"homepage": "https://github.com/md5crypt/tinyschema#readme",
+	"dependencies": {},
+	"devDependencies": {
+		"@types/node": "^12.12.30",
+		"@typescript-eslint/eslint-plugin": "^2.25.0",
+		"@typescript-eslint/parser": "^2.25.0",
+		"eslint": "^6.8.0",
+		"typescript": "^3.8.3"
+	}
+}

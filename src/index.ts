@@ -1,8 +1,8 @@
-export type TinySchemaObject = {[key: string]: TinySchemaType}
-export interface TinySchemaArray extends Array<TinySchemaType> { }
-export type TinySchemaType = string | TinySchemaObject | TinySchemaArray
+export type MiniSchemaObject = {[key: string]: MiniSchemaType}
+export interface MiniSchemaArray extends Array<MiniSchemaType> { }
+export type MiniSchemaType = string | MiniSchemaObject | MiniSchemaArray
 
-function verifyObject(data: {[key:string]:any}, schema: TinySchemaObject, path: string, strict: boolean) {
+function verifyObject(data: {[key:string]:any}, schema: MiniSchemaObject, path: string, strict: boolean) {
 	const prefix = path ? (path + ".") : ""
 	for (let key in schema) {
 		if (!(["_strict", "_any"].includes(key)) && schema.hasOwnProperty(key) && (key[key.length - 1] != "?")) {
@@ -26,7 +26,7 @@ function verifyObject(data: {[key:string]:any}, schema: TinySchemaObject, path: 
 	}
 }
 
-function verifyArray(data: any[], schema: TinySchemaArray, path: string, strict: boolean) {
+function verifyArray(data: any[], schema: MiniSchemaArray, path: string, strict: boolean) {
 	if (schema.length == 0) {
 		if (data.length != 0) {
 			throw new Error(`'${path}': expected empty array`)
@@ -61,7 +61,7 @@ function verifyArray(data: any[], schema: TinySchemaArray, path: string, strict:
 	}
 }
 
-function typeName(schema: TinySchemaType): string {
+function typeName(schema: MiniSchemaType): string {
 	if (Array.isArray(schema)) {
 		switch (schema[0]) {
 			case "enum":
@@ -78,7 +78,7 @@ function typeName(schema: TinySchemaType): string {
 	}
 }
 
-function verify(data: any, schema: TinySchemaType, path?: string, strict = true) {
+function verify(data: any, schema: MiniSchemaType, path?: string, strict = true) {
 	path = path || ""
 	if (Array.isArray(schema)) {
 		switch (schema[0]) {

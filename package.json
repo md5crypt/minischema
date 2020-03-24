@@ -1,5 +1,5 @@
 {
-	"name": "tinyschmea",
+	"name": "minischema",
 	"version": "1.0.0",
 	"description": "a simple json based data validator",
 	"main": "lib/index.js",
@@ -18,7 +18,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/md5crypt/tinyschema.git"
+		"url": "git+https://github.com/md5crypt/minischema.git"
 	},
 	"keywords": [
 		"schema",
@@ -29,9 +29,9 @@
 	"author": "Marek Korzeniowski",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/md5crypt/tinyschema/issues"
+		"url": "https://github.com/md5crypt/minischema/issues"
 	},
-	"homepage": "https://github.com/md5crypt/tinyschema#readme",
+	"homepage": "https://github.com/md5crypt/minischema#readme",
 	"dependencies": {},
 	"devDependencies": {
 		"@types/node": "^12.12.30",

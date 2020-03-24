@@ -1,4 +1,4 @@
-# TinySchema - a simple json based data validator
+# MiniSchema - a simple json based data validator
 
 Created mainly to verify configuration files
 * small
@@ -140,7 +140,7 @@ Example: verifying `{a: ["x", "y"]}` against `{a: ["string", "number"]}` will th
 A single function is exported from the module:
 
 ```typescript
-function verify(data: any, schema: TinySchemaType, path?: string, strict = true)
+function verify(data: any, schema: MiniSchemaType, path?: string, strict = true)
 ```
 
 * `data` - data to be verified
@@ -152,6 +152,6 @@ The function does not return a value, it throws an error on a schema mismatch wi
 
 For typescript three types are exported from the module:
 
-* `TinySchemaObject` - type for object schemas
-* `TinySchemaArray` - type for array, enumeration and union schemas
-* `TinySchemaType` - type for any schema (basic type string, object or array)
+* `MiniSchemaObject` - type for object schemas
+* `MiniSchemaArray` - type for array, enumeration and union schemas
+* `MiniSchemaType` - type for any schema (basic type string, object or array)

@@ -42,6 +42,7 @@ The following basic types are supported:
 * `boolean`
 * `array`
 * `object`
+* `function`
 
 a simplest schema is simply a string with a basic type name
 
@@ -69,6 +70,9 @@ If an object is given then an object is expected with matching keys and values o
 
 Example: `{"a": "number", "b": string}` will match` {"a": 2, "b": "x"}` as well as `{"a": 2}`
 
+### Functions
+
+If type is set to the string `"function"` then any javascript function will match. If an actual function (class) is given as the type (for example `RegExp`) instanceof will be used to check if the value matches the type.
 
 #### Strict / not strict modes
 

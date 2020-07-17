@@ -1,6 +1,6 @@
 export type MiniSchemaObject = {[key: string]: MiniSchemaType}
 export interface MiniSchemaArray extends Array<MiniSchemaType> { }
-export type MiniSchemaType = string | MiniSchemaObject | MiniSchemaArray
+export type MiniSchemaType = string | MiniSchemaObject | MiniSchemaArray | Function
 
 function verifyObject(data: {[key:string]:any}, schema: MiniSchemaObject, path: string, strict: boolean) {
 	const prefix = path ? (path + ".") : ""
@@ -73,6 +73,8 @@ function typeName(schema: MiniSchemaType): string {
 		}
 	} else if (typeof schema == "object") {
 		return "object"
+	} else if (typeof schema == "function") {
+		return schema.name
 	} else {
 		return schema
 	}
@@ -111,7 +113,11 @@ function verify(data: any, schema: MiniSchemaType, path?: string, strict = true)
 			throw new Error(`'${path}': expected type 'object', got '${typeof data}'`)
 		}
 		verifyObject(data, schema, path, strict)
-	} else if ((schema == "string") || (schema == "boolean") || (schema == "number") || (schema == "object")) {
+	} else if (typeof schema == "function") {
+		if (!(data instanceof schema)) {
+			throw new Error(`'${path}': expected type '${schema.name}', got '${typeof data == "object" ? data.constructor.name : typeof data}'`)
+		}
+	} else if ((schema == "string") || (schema == "boolean") || (schema == "number") || (schema == "object") || (schema == "function")) {
 		if (typeof data != schema) {
 			throw new Error(`'${path}': expected type '${schema}', got '${typeof data}'`)
 		}
